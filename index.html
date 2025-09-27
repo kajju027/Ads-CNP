@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Join Now — WhatsApp</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{
+      height:100%;
+      background:#000;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+    }
+    .hero{
+      position:relative;
+      width:100%;
+      height:100vh;
+      overflow:hidden;
+      background:#000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    video.bg{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:0;
+      filter:brightness(0.55);
+    }
+
+    .overlay{
+      position:absolute;
+      inset:0;
+      z-index:1;
+      pointer-events:none;
+      background:linear-gradient(rgba(0,0,0,0.08), rgba(0,0,0,0.08));
+    }
+
+    .ticker{
+      position:absolute;
+      left:0;
+      right:0;
+      top:0;
+      bottom:0;
+      z-index:2;
+      pointer-events:none;
+    }
+
+    .track{
+      position:absolute;
+      left:0;
+      right:0;
+      top:25%; /
+      transform:translateY(-50%);
+      height:120px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      pointer-events:none;
+    }
+
+    .move-btn{
+      pointer-events:auto;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:300px;      /* 🔼 বড় করা হয়েছে */
+      padding:28px 36px;    /* 🔼 বড় প্যাডিং */
+      border-radius:999px;
+      border:0;
+      font-weight:700;
+      font-size:26px;       /* 🔼 ফন্ট সাইজ বড় */
+      white-space:nowrap;
+      cursor:pointer;
+      text-decoration:none;
+      background:linear-gradient(90deg,#28a745,#218838);
+      color:#fff;
+      box-shadow:0 6px 25px rgba(0,0,0,0.45);
+      transform:translateZ(0);
+      transition:transform 0.2s ease;
+    }
+    .move-btn:hover{
+      transform:scale(1.05); /* হোভার করলে একটু বড় হবে */
+    }
+
+    @media(max-width:480px){
+      .track{height:100px}
+      .move-btn{
+        min-width:240px;
+        padding:22px 28px;
+        font-size:22px;
+      }
+    }
+
+    @keyframes slide-left{
+      0%{transform:translateX(110%)}
+      100%{transform:translateX(-110%)}
+    }
+
+    .animated-row{
+      display:inline-block;
+      animation:slide-left 18s linear infinite;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <video class="bg" autoplay muted loop playsinline preload="auto" tabindex="-1">
+      <source src="https://files.catbox.moe/hdhud3.mp4" type="video/mp4">
+      Your browser does not support the video element.
+    </video>
+    <div class="overlay"></div>
+
+    <div class="ticker">
+      <div class="track">
+        <div class="animated-row">
+          <a class="move-btn" href="https://whatsapp.com/channel/0029VaeylYYBPzjVNomWuZ0T" target="_blank"> Join Now 🥺</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Slow motion playback
+    const video = document.querySelector('video.bg');
+    video.addEventListener('loadedmetadata', ()=>{
+      video.playbackRate = 0.5; // half speed
+    });
+  </script>
+</body>
+</html>
