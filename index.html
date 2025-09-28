@@ -40,7 +40,10 @@
       background:linear-gradient(rgba(0,0,0,0.08), rgba(0,0,0,0.08));
     }
 
+    /* শুরুতে হাইড করার জন্য */
     .ticker{
+      opacity:0;
+      transition:opacity 1s ease;
       position:absolute;
       left:0;
       right:0;
@@ -49,18 +52,21 @@
       z-index:2;
       pointer-events:none;
     }
+    .ticker.show{
+      opacity:1;
+      pointer-events:auto;
+    }
 
     .track{
       position:absolute;
       left:0;
       right:0;
-      top:25%; /
+      top:25%;
       transform:translateY(-50%);
       height:120px;
       display:flex;
       align-items:center;
       justify-content:center;
-      pointer-events:none;
     }
 
     .move-btn{
@@ -68,12 +74,12 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      min-width:300px;      /* 🔼 বড় করা হয়েছে */
-      padding:28px 36px;    /* 🔼 বড় প্যাডিং */
+      min-width:300px;
+      padding:28px 36px;
       border-radius:999px;
       border:0;
       font-weight:700;
-      font-size:26px;       /* 🔼 ফন্ট সাইজ বড় */
+      font-size:26px;
       white-space:nowrap;
       cursor:pointer;
       text-decoration:none;
@@ -84,7 +90,7 @@
       transition:transform 0.2s ease;
     }
     .move-btn:hover{
-      transform:scale(1.05); /* হোভার করলে একটু বড় হবে */
+      transform:scale(1.05);
     }
 
     @media(max-width:480px){
@@ -115,7 +121,7 @@
     </video>
     <div class="overlay"></div>
 
-    <div class="ticker">
+    <div class="ticker" id="delayedContent">
       <div class="track">
         <div class="animated-row">
           <a class="move-btn" href="https://whatsapp.com/channel/0029VaeylYYBPzjVNomWuZ0T" target="_blank"> Join Now 🥺</a>
@@ -130,6 +136,11 @@
     video.addEventListener('loadedmetadata', ()=>{
       video.playbackRate = 0.5; // half speed
     });
+
+    // ২৫ সেকেন্ড পর কনটেন্ট শো হবে
+    setTimeout(()=>{
+      document.getElementById('delayedContent').classList.add('show');
+    }, 25000); // 25s = 25000ms
   </script>
 </body>
-</html>
+  </html>
